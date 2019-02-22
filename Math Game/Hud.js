@@ -30,14 +30,11 @@ function destory() {
 
 function operation() {
   for (let c = 0; c < commet.length; c++) {
-    if(commet[c].an === int(textField.value())){
-    score += 10;
-    }else{
-      wrong.option(commet[c].i1 + ' x ' + commet[c].i2 + ' = ' + commet[c].i1 * commet[c].i2);
-    }
-    if(commet[c].i1 > data.length - 2){
-      commet[c].i1 = 0;
-    }
+    if (commet[c].an === int(textField.value())) {
+      score += 10;
+      if (commet[c].i1 > data.length - 2) {
+        commet[c].i1 = 0;
+      }
       if (commet[c].i2 > data.length - 2) {
         commet[c].i2 = 0;
         commet[c].i1 += 1;
@@ -48,14 +45,16 @@ function operation() {
       let holder2 = commet[c].i2;
       commet[c] = new Commet(random(30 + 40 / 2, width - 30 - 40 / 2), random(30 + 40 / 2, height - 50 - 40 / 2), holder1, holder2);
       textField.value("");
-      for(let i = 0;i<10;i++){
-        push();
-        stroke(255,0,0);
-        line(width/2,height - 50,commet[c].p.x,commet[c].p.y);
-        pop();
-      }
-      score += 10;
+    }
+
+    for (let i = 0; i < 10; i++) {
+      push();
+      stroke(255, 0, 0);
+      line(width / 2, height - 50, commet[c].p.x, commet[c].p.y);
+      pop();
+    }
   }
+  textField.value("");
 }
 
 class Commet {
@@ -90,7 +89,7 @@ class Commet {
     ellipseMode(CENTER);
     ellipse(this.p.x, this.p.y, this.r, this.r);
     pop();
-    
+
     push();
     fill(0);
     text(this.op, this.p.x - this.r / 3, this.p.y + this.r / 6);
