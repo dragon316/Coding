@@ -24,10 +24,6 @@ function Hud() {
   pop();
 }
 
-function destory() {
-
-}
-
 function operation() {
   for (let c = 0; c < commet.length; c++) {
     if (commet[c].an === int(textField.value())) {
@@ -43,8 +39,9 @@ function operation() {
       }
       let holder1 = commet[c].i1;
       let holder2 = commet[c].i2;
-      commet[c] = new Commet(random(30 + 40 / 2, width - 30 - 40 / 2), random(30 + 40 / 2, height - 50 - 40 / 2), holder1, holder2);
-      textField.value("");
+      commet[c] = new Commet(random(30 + 40 / 2,width - 30 - 40 / 2), 
+                             random(30 + 40 / 2, height - 50 - 40 / 2), 
+                             holder1, holder2);
     }
 
     for (let i = 0; i < 10; i++) {
@@ -63,7 +60,6 @@ class Commet {
     this.v = createVector(0, 0);
     this.i1 = i1;
     this.i2 = i2;
-    this.i2 = this.i2;
     this.n1 = data[i1];
     this.n2 = data[i2];
     this.op = '' + this.n1 + ' x ' + this.n2;
